@@ -1,0 +1,71 @@
+/////////////////////
+// Media Queries - brekpoints
+/////////////////////
+$desktop_width: 1200px;
+$tablet_width: 999px;
+$mobile_width: 640px;
+
+@mixin media_lg {
+	@media only screen
+    and (min-width: #{$desktop_width}) {
+		@content;
+	}
+}
+@mixin media_md {
+	@media only screen
+    and (max-width: #{$desktop_width}) {
+		@content;
+	}
+}
+
+@mixin media_sm {
+	@media only screen
+    and (max-width: #{$tablet_width}) {
+		@content;
+	}
+}
+@mixin media_xs  {
+	@media only screen
+    and (max-width: #{$mobile_width}) {
+		@content;
+	}
+}
+
+@mixin media_ie {
+	// ie9+ (for applying rules USE !important)
+	@media screen and (min-width: 0\0) and (min-resolution: 72dpi) {
+		@content;
+	}
+}
+
+@mixin media_edge {
+	@supports (-ms-accelerator: true) {
+		@content;
+	}
+}
+
+
+
+@mixin aplly_responsive($class) {
+  @include media_lg() {
+    .lg\:#{$class} {
+      @content;
+    }
+  }
+
+  @include media_md() {
+    html .md\:#{$class} {
+      @content;
+    }
+  }
+  @include media_sm() {
+    html body .sm\:#{$class} {
+        @content;
+    }
+  }
+  @include media_xs() {
+    html body .site-wrap .xs\:#{$class} {
+        @content;
+    }
+  }
+}

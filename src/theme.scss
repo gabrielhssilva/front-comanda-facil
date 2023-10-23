@@ -1,0 +1,126 @@
+// regular style toast
+@import "ngx-toastr/toastr";
+
+// Material Customization
+@import "@angular/material/theming";
+@include mat-core();
+
+// Mudança da fonte do Material
+$custom-typography: mat-typography-config(
+  $font-family: "Mulish",
+);
+
+@include angular-material-typography($custom-typography);
+
+// Mudança do tema do Material
+/* For use in src/lib/core/theming/_palette.scss */
+$md-primary: (
+  50: #ebf7f8,
+  100: #cceaed,
+  200: #aadce1,
+  300: #88ced5,
+  400: #6fc4cc,
+  500: #55b9c3,
+  600: #4eb2bd,
+  700: #44aab5,
+  800: #3ba2ae,
+  900: #2a93a1,
+  A100: #e3fcff,
+  A200: #b0f5ff,
+  A400: #7defff,
+  A700: #63ecff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$md-accent: (
+  50: #e9f0f6,
+  100: #c8dae9,
+  200: #a3c1da,
+  300: #7ea8cb,
+  400: #6295bf,
+  500: #4682b4,
+  600: #3f7aad,
+  700: #376fa4,
+  800: #2f659c,
+  900: #20528c,
+  A100: #c9e0ff,
+  A200: #96c3ff,
+  A400: #63a7ff,
+  A700: #4998ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$md-warn: (
+  50: #fff4e0,
+  100: #ffe4b3,
+  200: #ffd280,
+  300: #ffc04d,
+  400: #ffb326,
+  500: #ffa500,
+  600: #ff9d00,
+  700: #ff9300,
+  800: #ff8a00,
+  900: #ff7900,
+  A100: #ffffff,
+  A200: #fff8f2,
+  A400: #ffdabf,
+  A700: #ffcba6,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$custom-app-primary: mat-palette($md-primary, 500);
+$custom-app-accent: mat-palette($md-accent);
+$custom-app-warn: mat-palette($mat-red);
+
+$custom-theme: mat-light-theme(
+  $custom-app-primary,
+  $custom-app-accent,
+  $custom-app-warn
+);
+
+@include angular-material-theme($custom-theme);

@@ -1,0 +1,21 @@
+<div class="delete-dialog">
+  <div class="header">
+    <h2>Excluir pedido</h2>
+  </div>
+
+  <div class="info">
+    <p class="message">
+      Tem certeza que deseja <span class="warn">EXCLUIR</span> o pedido?
+    </p>
+  </div>
+
+  <div class="actions">
+    <button mat-button color="primary" [mat-dialog-close]="false">
+      Cancelar
+    </button>
+    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+    <button mat-flat-button color="warn" (click)="deleteOrder()">
+      Excluir
+    </button>
+  </div>
+</div>

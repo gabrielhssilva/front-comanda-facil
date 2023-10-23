@@ -1,0 +1,60 @@
+<div class="new-order">
+  <div class="order">
+    <div class="header">
+      <mat-icon class="material-symbols-outlined" [routerLink]="'/'"
+        >arrow_back_ios</mat-icon
+      >
+
+      <h3>Novo pedido</h3>
+    </div>
+
+    <div class="form-container">
+      <form [formGroup]="newOrderForm">
+        <div class="fields">
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              type="text"
+              placeholder="Nome"
+              formControlName="cliente"
+            />
+            <mat-error>Campo obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo de pão</mat-label>
+            <mat-select formControlName="tipoPao">
+              <mat-option *ngFor="let tipo of tiposPao" [value]="tipo">{{
+                tipo
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo de queijo</mat-label>
+            <mat-select formControlName="tipoQueijo">
+              <mat-option *ngFor="let tipo of tiposQueijo" [value]="tipo">{{
+                tipo
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Complementos</mat-label>
+            <mat-select formControlName="complementos" multiple>
+              <mat-option
+                *ngFor="let complemento of complementos"
+                [value]="complemento"
+                >{{ complemento }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <button mat-flat-button color="primary" (click)="submitOrder()">
+          Enviar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

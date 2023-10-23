@@ -1,0 +1,53 @@
+<div class="home">
+  <div class="orders">
+    <div class="header">
+      <h3>Pedidos</h3>
+      <button mat-button color="primary" [routerLink]="'/novo-pedido'">
+        <mat-icon class="material-symbols-outlined">add_circle</mat-icon> Novo
+        pedido
+      </button>
+    </div>
+    <div class="list">
+      <div class="order" *ngFor="let order of orders">
+        <div class="delete-icon">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon class="material-symbols-outlined">more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openDeleteDialog(order)">
+              <mat-icon>delete</mat-icon>
+              <span>Excluir pedido</span>
+            </button>
+            <button mat-menu-item (click)="updateOrder(order)">
+              <mat-icon>{{
+                order.finalizado ? "refresh" : "check_small"
+              }}</mat-icon>
+              <span
+                >{{ order.finalizado ? "Retomar" : "Finalizar" }} pedido</span
+              >
+            </button>
+          </mat-menu>
+        </div>
+        <span class="name"><strong>Nome: </strong> {{ order.cliente }}</span>
+        <span class="bread"><strong>Pão: </strong> {{ order.tipoPao }}</span>
+        <span class="cheese"
+          ><strong>Queijo: </strong> {{ order.tipoQueijo }}</span
+        >
+        <span class="supplements"
+          ><strong>Complementos: </strong>
+          <span *ngFor="let item of order.complementos; let last = last">
+            {{ item }}{{ last ? "" : ", " }}
+          </span></span
+        >
+        <span class="status"
+          ><strong>Status: </strong>
+          {{ order.finalizado ? "Finalizado" : "Em produção" }}</span
+        >
+      </div>
+
+      <span class="no-orders" *ngIf="orders.length == 0"
+        >Não há pedidos no momento ☹️</span
+      >
+    </div>
+  </div>
+</div>

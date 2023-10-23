@@ -1,0 +1,61 @@
+.home {
+  .orders {
+    padding: 10px 20px;
+
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      h3 {
+        font-size: 25px;
+        font-weight: 800;
+        margin: 0;
+        line-height: 100%;
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+
+        mat-icon {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+      overflow-y: scroll;
+      max-height: 520px;
+      padding-bottom: 80px;
+
+      .order {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        border: 1px solid #e2e2e2;
+        border-radius: 15px;
+        padding: 10px 12px;
+        position: relative;
+        // box-shadow: 0px -2px 10px -4px rgba(0,0,0,0.25);
+
+        .delete-icon {
+          position: absolute;
+          color: #ff7777;
+          right: 0px;
+          top: 2px;
+        }
+      }
+
+      .no-orders {
+        text-align: center;
+        margin-top: 80px;
+      }
+    }
+  }
+}

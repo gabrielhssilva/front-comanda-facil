@@ -1,0 +1,27 @@
+.delete-dialog {
+  padding: 20px;
+
+  .header {
+    h2 {
+      margin: 0;
+      line-height: 100%;
+      font-size: 20px;
+    }
+  }
+
+  .info {
+    text-align: center;
+
+    .warn {
+      color: #f44336;
+      font-weight: bold;
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+}
