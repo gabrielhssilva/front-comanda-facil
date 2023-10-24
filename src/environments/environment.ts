@@ -1,4 +1,4 @@
-const urlBase = 'http://localhost:3000'; // HML
+const urlBase = 'https://api-comanda-facil.onrender.com';
 const suffix = '/api';
 
 export const environment = {

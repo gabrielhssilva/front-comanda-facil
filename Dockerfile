@@ -1,7 +1,10 @@
-FROM nginx:alpine
+FROM node:18 as node
+WORKDIR /app
+COPY . .
+RUN npm install
+RUN npm run build --configuration=production
 
-COPY nginx.conf /etc/nginx/nginx.conf
+FROM nginx:1.21
+COPY --from=node /app/dist/comanda-facil /usr/share/nginx/html
 
-WORKDIR /usr/share/nginx/html
-
-COPY dist/ .
+EXPOSE 80
