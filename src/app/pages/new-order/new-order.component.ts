@@ -12,7 +12,7 @@ import { OrdersService } from 'src/app/services/orders.service';
 export class NewOrderComponent implements OnInit {
   newOrderForm: FormGroup;
 
-  tiposPao = ['Francês ( Madero )', 'Brioche'];
+  tiposPao = ['Brioche'];
   tiposQueijo = ['Cheddar', 'Muçarela'];
   complementos = [
     'Alface',
