@@ -29,16 +29,22 @@
           </mat-menu>
         </div>
         <span class="name"><strong>Nome: </strong> {{ order.cliente }}</span>
-        <span class="bread"><strong>Pão: </strong> {{ order.tipoPao }}</span>
-        <span class="cheese"
-          ><strong>Queijo: </strong> {{ order.tipoQueijo }}</span
-        >
-        <span class="supplements"
-          ><strong>Complementos: </strong>
-          <span *ngFor="let item of order.complementos; let last = last">
-            {{ item }}{{ last ? "" : ", " }}
-          </span></span
-        >
+        <span class="bread"
+          ><strong>Pão: </strong> {{ order.tipoPao }}
+          <span *ngIf="order.tipoPao == 'Hambúrguer do Chefe'">🍔</span>
+        </span>
+
+        <ng-container *ngIf="order.tipoPao != 'Hambúrguer do Chefe'">
+          <span class="cheese"
+            ><strong>Queijo: </strong> {{ order.tipoQueijo }}</span
+          >
+          <span class="supplements"
+            ><strong>Complementos: </strong>
+            <span *ngFor="let item of order.complementos; let last = last">
+              {{ item }}{{ last ? "" : ", " }}
+            </span></span
+          >
+        </ng-container>
         <span class="status"
           ><strong>Status: </strong>
           {{ order.finalizado ? "Finalizado" : "Em produção" }}</span

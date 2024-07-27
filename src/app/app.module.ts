@@ -17,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { DeleteDialogComponent } from './pages/home/dialogs/delete-dialog/delete-dialog.component';
 
@@ -33,6 +34,7 @@ import { DeleteDialogComponent } from './pages/home/dialogs/delete-dialog/delete
     BrowserAnimationsModule,
     HttpClientModule,
     MatButtonModule,
+    MatCheckboxModule,
     MatSelectModule,
     FormsModule,
     MatInputModule,

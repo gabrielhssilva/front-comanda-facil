@@ -12,7 +12,7 @@ import { OrdersService } from 'src/app/services/orders.service';
 export class NewOrderComponent implements OnInit {
   newOrderForm: FormGroup;
 
-  tiposPao = ['Brioche'];
+  tiposPao = ['Francês ( Madero )', 'Brioche'];
   tiposQueijo = ['Cheddar', 'Muçarela'];
   complementos = [
     'Alface',
@@ -24,6 +24,8 @@ export class NewOrderComponent implements OnInit {
     'Geleia de bacon',
     'Cheddar cremoso',
   ];
+
+  bossBurguer: boolean = false;
 
   orders: any = [];
 
@@ -42,17 +44,41 @@ export class NewOrderComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  checkBossBurguer() {
+    if (this.bossBurguer) {
+      this.newOrderForm.controls['tipoPao'].setValue('Hambúrguer do Chefe');
+      this.newOrderForm.controls['tipoQueijo'].setValue('-');
+      this.newOrderForm.controls['complementos'].setValue([]);
+
+      this.newOrderForm.controls['tipoPao'].disable();
+      this.newOrderForm.controls['tipoQueijo'].disable();
+      this.newOrderForm.controls['complementos'].disable();
+    } else {
+      this.newOrderForm.controls['tipoPao'].enable();
+      this.newOrderForm.controls['tipoQueijo'].enable();
+      this.newOrderForm.controls['complementos'].enable();
+    }
+  }
+
   submitOrder() {
     let order = this.newOrderForm.getRawValue();
 
-    this.ordersService.createOrder(order).subscribe({
-      next: () => {
-        this.toastr.success('Pedido criado com sucesso');
-        this.router.navigate(['/']);
-      },
-      error: () => {
-        this.toastr.error('Não foi possível criar o pedido', 'Erro');
-      },
-    });
+    if (this.bossBurguer) {
+      order['bossBurguer'] = true;
+    }
+
+    if (this.newOrderForm.controls['cliente'].valid) {
+      this.ordersService.createOrder(order).subscribe({
+        next: () => {
+          this.toastr.success('Pedido criado com sucesso');
+          this.router.navigate(['/']);
+        },
+        error: () => {
+          this.toastr.error('Não foi possível criar o pedido', 'Erro');
+        },
+      });
+    } else {
+      this.toastr.warning('Informe o nome do cliente', 'Atenção');
+    }
   }
 }

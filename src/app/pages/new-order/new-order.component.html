@@ -21,6 +21,15 @@
             <mat-error>Campo obrigatório</mat-error>
           </mat-form-field>
 
+          <div class="boss-burguer">
+            <mat-checkbox
+              [(ngModel)]="bossBurguer"
+              [ngModelOptions]="{ standalone: true }"
+              (change)="checkBossBurguer()"
+              >Quero o Hambúrguer do Chefe!</mat-checkbox
+            >
+          </div>
+
           <mat-form-field appearance="outline">
             <mat-label>Tipo de pão</mat-label>
             <mat-select formControlName="tipoPao">
